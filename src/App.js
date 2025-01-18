@@ -1,25 +1,20 @@
-import { useState, useMemo, useRef } from 'react';
-import { Canvas, useThree,extend, useFrame  } from '@react-three/fiber';
+import { useState, useMemo, useRef,createContext, useContext } from 'react';
+import { Canvas  } from '@react-three/fiber';
 import { Grid, OrbitControls, Text,   MeshTransmissionMaterial } from '@react-three/drei';
 import { BoxWithPopup } from './attachmentPanel';
 import { Suspense } from 'react';
+import {PanelExtension} from './objects/panelExtension'
 
+
+const JointContext = createContext();
+const draggingContext = createContext();
+export const objectContext = createContext();
 export const App = () => {
   const [isDragging, setIsDragging] = useState(false);
-  const [lines, setLines] = useState([{start: [-100, 0, 0], end: [100, 0, 0], color: 'lightgray', },  ]);
+  const [lines, setLines] = useState([{start: [-100, 0, 0], end: [100, 0, 0], color: 'lightgray', }  ]);
   const [popupData, setPopupData] = useState(null); // State to store current clicked box data
-  const [cylinders, setCylinders] = useState([]); // Store cylinders in the scene
-  const [placePoint, setPlacePoint] = useState(false); // Store cylinders in the scene
-  const addLine = () => {
-    setLines([
-      ...lines,
-      {
-        start: [Math.random() * 200 - 100, 0, Math.random() * 200 - 100],
-        end: [Math.random() * 200 - 100, 0, Math.random() * 200 - 100],
-        color: 'lightgray',
-      },
-    ]);
-  };
+  const [placePoint, setPlacePoint] = useState(null); // Store cylinders in the scene
+  const [objectPoint, setObjectPoint] = useState(null) 
 
   // Function to handle click on BoxBetweenPoints and pass data to popup
   const handleBoxClick = (start, end, startState, endState, curHeight, setHeightFunc  ) => {
@@ -49,92 +44,98 @@ export const App = () => {
   };
   
   // Handle grid click to place a cylinder
-  const handleGridClick = (event) => {
-
-    setLines([
-      ...lines,
-      {
-        start: [Math.random() * 200 - 100, 0, Math.random() * 200 - 100],
-        end: [Math.random() * 200 - 100, 0, Math.random() * 200 - 100],
-        color: 'lightgray',
-      },
-    ]);
-  };
-
+  // setLines([
+  //   ...lines,
+  //   {
+  //     start: [Math.random() * 200 - 100, 0, Math.random() * 200 - 100],
+  //     end: [Math.random() * 200 - 100, 0, Math.random() * 200 - 100],
+  //     color: 'lightgray',
+  //   },
+  // ]);
   // Handle grid click to place a cylinder
-  const handyUP = (event) => {
-
-    console.log('here')
-  };
   return (
     <div style={{ position: 'relative', height: '100vh' }}>
-      <div style={{ position: 'absolute', top: 20, left: 20, zIndex: 1 }}>
-        <button onClick={addLine}>Add Line</button>
-      </div>
       <Suspense>
         <BoxWithPopup data={popupData} onUpdateDimensions={handleUpdateDimensions}  />
         <Canvas orthographic raycaster={{ params: { Line: { threshold: 5 } } }} camera={{ position: [0, 300, 500], zoom: 1 }}             >
           <ambientLight intensity={Math.PI / 2} />
           <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI} />
           <pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI} />
+            <JointContext.Provider value={{placePoint, setPlacePoint}}>
+            <objectContext.Provider value={{objectPoint, setObjectPoint}}>
+            <draggingContext.Provider value={{isDragging, setIsDragging}}>
+                            {lines.map((line, index) => (
+                              <PolyLine
+                                key={index}
+                                start={line.start}
+                                end={line.end}
+                                height={132}
+                                color={line.color}
+                                setIsDragging={setIsDragging}
+                                onBoxClick={handleBoxClick} // Trigger data update for clicked box
+                              />
+                            ))}
 
-          {lines.map((line, index) => (
-            <PolyLine
-              key={index}
-              start={line.start}
-              end={line.end}
-              height={132}
-              color={line.color}
-              setIsDragging={setIsDragging}
-              onBoxClick={handleBoxClick} // Trigger data update for clicked box
-            />
-          ))}
-          <mesh visible={false} onClick={handyUP}>
-            <boxGeometry args={[10000, 1, 100000]} />
-            <meshStandardMaterial color='yellow' />
+                            {placePoint &&             <PanelExtension pos = {placePoint}></PanelExtension>}
 
-          </mesh>
-          <WallPost></WallPost>
-          <Grid
-            rotation={[0, 0, 0]}
-            cellSize={100}
-            cellThickness={2}
-            cellColor="red"
-            sectionSize={20}
-            sectionThickness={1.5}
-            sectionColor="lightgray"
-            fadeDistance={10000}
-            infiniteGrid
-
-          />
+                            <Platform lines={lines} setLines={setLines}></Platform>
+                            <Grid
+                              rotation={[0, 0, 0]}
+                              cellSize={100}
+                              cellThickness={2}
+                              cellColor="red"
+                              sectionSize={20}
+                              sectionThickness={1.5}
+                              sectionColor="lightgray"
+                              fadeDistance={10000}
+                              infiniteGrid
+                            />
+            </draggingContext.Provider>
+            </objectContext.Provider>
+            </JointContext.Provider>
           <OrbitControls enabled={!isDragging} />
         </Canvas>
       </Suspense>
     </div>
   );
 };
-function WallPost(){
-  const [position, setPosition] = useState([10, 16, 16]);
-  console.log(position)
-  //setPosition([state.raycaster.ray.origin.x, state.raycaster.ray.origin.y, state.raycaster.ray.origin.z])
-  useFrame((state) => setPosition([state.raycaster.ray.origin.x, 0, state.raycaster.ray.origin.z]));
+function Platform({ lines, setLines }){
+  const { isDragging,setIsDragging } = useContext(draggingContext);
+  const {  setPlacePoint } = useContext(JointContext);
+  const { objectPoint, setObjectPoint } = useContext(objectContext);
+  const clickPlatform = () => {
+    console.log(isDragging,objectPoint)
+      if (objectPoint !== null){
+        console.log('here')
+        setLines([
+          ...lines,
+          {
+            start: objectPoint[0],
+            end:objectPoint[1],
+            color: 'lightgray',
+          },
+        ]);
+        setObjectPoint(null)
+        setPlacePoint(null)
+        setIsDragging(false)
+      }
+  };
   return (
     <>
-      <mesh visible={true} position={position} >
-        <sphereGeometry args={[10, 16, 16]}  />
+      <mesh visible={false} onClick={clickPlatform}>
+        <boxGeometry args={[10000, 1, 100000]} />
         <meshStandardMaterial color='yellow' />
       </mesh>
     </>
-  );
+  )
 }
-
-function PolyLine({ start, end, height, setIsDragging, onBoxClick }) {
+function PolyLine({ start, end, height,  onBoxClick }) {
   const [lineStart, setLineStart] = useState(start);
   const [lineEnd, setLineEnd] = useState(end);
   return (
     <>
-      <EndPoint position={lineStart} onDrag={setLineStart} setIsDragging={setIsDragging} otherPointPosition={lineEnd} />
-      <EndPoint position={lineEnd} onDrag={setLineEnd} setIsDragging={setIsDragging} otherPointPosition={lineStart} />
+      <EndPoint position={lineStart} onDrag={setLineStart}  otherPointPosition={lineEnd} />
+      <EndPoint position={lineEnd} onDrag={setLineEnd}  otherPointPosition={lineStart} />
       <BoxBetweenPoints start={lineStart} end={lineEnd} onDragStart={setLineStart} enterHeight={height} onDragEnd={setLineEnd} BoxClick={onBoxClick}  />
     </>
   );
@@ -184,11 +185,12 @@ function BoxBetweenPoints({ start, end,  onDragStart,onDragEnd, enterHeight, Box
 }
 
 
-function EndPoint({ position, onDrag, setIsDragging, otherPointPosition }) {
+function EndPoint({ position, onDrag, otherPointPosition }) {
   const [active, setActive] = useState(false);
   const [hovered, setHover] = useState(false);
-
-
+  const boxRef = useRef();
+  const { setPlacePoint } = useContext(JointContext);
+  const { setIsDragging } = useContext(draggingContext);
   const down = (event) => {
     event.stopPropagation();
     event.target.setPointerCapture(event.pointerId);
@@ -210,9 +212,7 @@ function EndPoint({ position, onDrag, setIsDragging, otherPointPosition }) {
     }
   };
 
-  const click = (event) =>{
-    console.log(event)
-  }
+
   return (
     <mesh
       position={position}
@@ -222,7 +222,9 @@ function EndPoint({ position, onDrag, setIsDragging, otherPointPosition }) {
       onLostPointerCapture={up}
       onPointerUp={up}
       onPointerMove={move}
-      onClick={click}>
+      onClick={() => {setPlacePoint(boxRef.current)} }
+      ref = {boxRef}>
+      
 
       <sphereGeometry args={[10, 16, 16]} />
       <meshBasicMaterial color={hovered ? 'hotpink' : 'orange'} />
