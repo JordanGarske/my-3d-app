@@ -1,0 +1,11 @@
+{
+  "files": {
+    "main.css": "/my-3d-app/static/css/main.f1656b25.css",
+    "main.js": "/my-3d-app/static/js/main.0794b028.js",
+    "index.html": "/my-3d-app/index.html"
+  },
+  "entrypoints": [
+    "static/css/main.f1656b25.css",
+    "static/js/main.0794b028.js"
+  ]
+}
