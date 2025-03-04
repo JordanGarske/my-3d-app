@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/my-3d-app/static/css/main.f1656b25.css",
-    "main.js": "/my-3d-app/static/js/main.33e022e0.js",
+    "main.css": "/my-3d-app/static/css/main.701158a0.css",
+    "main.js": "/my-3d-app/static/js/main.84fdb056.js",
     "static/media/fabric.jpg": "/my-3d-app/static/media/fabric.ab8df158848345e7c846.jpg",
     "static/media/cherry-wood.jpg": "/my-3d-app/static/media/cherry-wood.2cfb9e475a781dbc0aaf.jpg",
     "static/media/wood-shelve.jpg": "/my-3d-app/static/media/wood-shelve.b5ae327592040665edea.jpg",
@@ -12,7 +12,7 @@
     "index.html": "/my-3d-app/index.html"
   },
   "entrypoints": [
-    "static/css/main.f1656b25.css",
-    "static/js/main.33e022e0.js"
+    "static/css/main.701158a0.css",
+    "static/js/main.84fdb056.js"
   ]
 }
