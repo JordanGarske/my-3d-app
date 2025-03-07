@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/my-3d-app/static/css/main.701158a0.css",
-    "main.js": "/my-3d-app/static/js/main.f5938b5a.js",
+    "main.js": "/my-3d-app/static/js/main.45bdee33.js",
     "static/media/rosewood_veneer1_disp_2k.png": "/my-3d-app/static/media/rosewood_veneer1_disp_2k.67573b19968c179d786e.png",
     "static/media/rosewood_veneer1_diff_2k.jpg": "/my-3d-app/static/media/rosewood_veneer1_diff_2k.1824f2d8304c86a00eb8.jpg",
     "static/media/Carpet016_1K-JPG_NormalGL.jpg": "/my-3d-app/static/media/Carpet016_1K-JPG_NormalGL.992388ccaee98df4f62d.jpg",
@@ -21,6 +21,6 @@
   },
   "entrypoints": [
     "static/css/main.701158a0.css",
-    "static/js/main.f5938b5a.js"
+    "static/js/main.45bdee33.js"
   ]
 }
