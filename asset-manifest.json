@@ -1,15 +1,19 @@
 {
   "files": {
     "main.css": "/my-3d-app/static/css/main.c2a96717.css",
-    "main.js": "/my-3d-app/static/js/main.93558c34.js",
+    "main.js": "/my-3d-app/static/js/main.56a3f87d.js",
     "static/media/rosewood_veneer1_disp_2k.png": "/my-3d-app/static/media/rosewood_veneer1_disp_2k.67573b19968c179d786e.png",
     "static/media/rosewood_veneer1_diff_2k.jpg": "/my-3d-app/static/media/rosewood_veneer1_diff_2k.1824f2d8304c86a00eb8.jpg",
     "static/media/Carpet016_1K-JPG_NormalGL.jpg": "/my-3d-app/static/media/Carpet016_1K-JPG_NormalGL.992388ccaee98df4f62d.jpg",
     "static/media/rosewood_veneer1_arm_2k.jpg": "/my-3d-app/static/media/rosewood_veneer1_arm_2k.d0534bfac389d6c501cc.jpg",
     "static/media/rosewood_veneer1_nor_gl_2k.jpg": "/my-3d-app/static/media/rosewood_veneer1_nor_gl_2k.5bfb92ab7d7f5ef67519.jpg",
+    "static/media/matt-black-NormalGL.jpg": "/my-3d-app/static/media/matt-black-NormalGL.198ac38b83adcb797daf.jpg",
     "static/media/fabric.jpg": "/my-3d-app/static/media/fabric.ab8df158848345e7c846.jpg",
     "static/media/Carpet016_1K-JPG_Color.jpg": "/my-3d-app/static/media/Carpet016_1K-JPG_Color.c4ddfc4972d9a8c7ce28.jpg",
-    "static/media/Carpet016_1K-JPG_AmbientOcclusion.jpg": "/my-3d-app/static/media/Carpet016_1K-JPG_AmbientOcclusion.dee792264906db662d3b.jpg",
+    "static/media/matt-black-Displacement.jpg": "/my-3d-app/static/media/matt-black-Displacement.021e46fa86dc1741deeb.jpg",
+    "static/media/matt-black-Color.jpg": "/my-3d-app/static/media/matt-black-Color.2ad697543389c4ed760a.jpg",
+    "static/media/matt-black-Roughness.jpg": "/my-3d-app/static/media/matt-black-Roughness.02b244705961412537bd.jpg",
+    "static/media/Carpet-AO.jpg": "/my-3d-app/static/media/Carpet-AO.dee792264906db662d3b.jpg",
     "static/media/Carpet016_1K-JPG_Displacement.jpg": "/my-3d-app/static/media/Carpet016_1K-JPG_Displacement.c26da0e266331aa731d7.jpg",
     "static/media/Carpet016_1K-JPG_Roughness.jpg": "/my-3d-app/static/media/Carpet016_1K-JPG_Roughness.ea2904e51ab13e231bb5.jpg",
     "static/media/cherry-wood.jpg": "/my-3d-app/static/media/cherry-wood.2cfb9e475a781dbc0aaf.jpg",
@@ -22,6 +26,6 @@
   },
   "entrypoints": [
     "static/css/main.c2a96717.css",
-    "static/js/main.93558c34.js"
+    "static/js/main.56a3f87d.js"
   ]
 }
