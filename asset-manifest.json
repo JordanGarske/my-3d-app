@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/my-3d-app/static/css/main.c2a96717.css",
-    "main.js": "/my-3d-app/static/js/main.7064afbf.js",
+    "main.js": "/my-3d-app/static/js/main.f0761d48.js",
     "static/media/rosewood_veneer1_disp_2k.png": "/my-3d-app/static/media/rosewood_veneer1_disp_2k.67573b19968c179d786e.png",
     "static/media/rosewood_veneer1_diff_2k.jpg": "/my-3d-app/static/media/rosewood_veneer1_diff_2k.1824f2d8304c86a00eb8.jpg",
     "static/media/tan-fabric-GL.jpg": "/my-3d-app/static/media/tan-fabric-GL.604fb6498e48c88d3c8b.jpg",
@@ -35,6 +35,6 @@
   },
   "entrypoints": [
     "static/css/main.c2a96717.css",
-    "static/js/main.7064afbf.js"
+    "static/js/main.f0761d48.js"
   ]
 }
