@@ -1,10 +1,12 @@
 {
   "files": {
     "main.css": "/my-3d-app/static/css/main.c2a96717.css",
-    "main.js": "/my-3d-app/static/js/main.2ad3908d.js",
+    "main.js": "/my-3d-app/static/js/main.7064afbf.js",
     "static/media/rosewood_veneer1_disp_2k.png": "/my-3d-app/static/media/rosewood_veneer1_disp_2k.67573b19968c179d786e.png",
     "static/media/rosewood_veneer1_diff_2k.jpg": "/my-3d-app/static/media/rosewood_veneer1_diff_2k.1824f2d8304c86a00eb8.jpg",
+    "static/media/tan-fabric-GL.jpg": "/my-3d-app/static/media/tan-fabric-GL.604fb6498e48c88d3c8b.jpg",
     "static/media/Carpet016_1K-JPG_NormalGL.jpg": "/my-3d-app/static/media/Carpet016_1K-JPG_NormalGL.992388ccaee98df4f62d.jpg",
+    "static/media/tan-fabric-Color.jpg": "/my-3d-app/static/media/tan-fabric-Color.97c0c45c63cd2ce2ded3.jpg",
     "static/media/rosewood_veneer1_arm_2k.jpg": "/my-3d-app/static/media/rosewood_veneer1_arm_2k.d0534bfac389d6c501cc.jpg",
     "static/media/rosewood_veneer1_nor_gl_2k.jpg": "/my-3d-app/static/media/rosewood_veneer1_nor_gl_2k.5bfb92ab7d7f5ef67519.jpg",
     "static/media/matt-black-NormalGL.jpg": "/my-3d-app/static/media/matt-black-NormalGL.198ac38b83adcb797daf.jpg",
@@ -14,6 +16,9 @@
     "static/media/matt-black-Displacement.jpg": "/my-3d-app/static/media/matt-black-Displacement.021e46fa86dc1741deeb.jpg",
     "static/media/matt-black-Color.jpg": "/my-3d-app/static/media/matt-black-Color.2ad697543389c4ed760a.jpg",
     "static/media/wood_gl.jpg": "/my-3d-app/static/media/wood_gl.d21cb83f70ce2eb976d1.jpg",
+    "static/media/tan-fabric-Rough.jpg": "/my-3d-app/static/media/tan-fabric-Rough.aaa64c77fda943ec766d.jpg",
+    "static/media/tan-fabric-AO.jpg": "/my-3d-app/static/media/tan-fabric-AO.e204d3059d6cd09348d7.jpg",
+    "static/media/tan-fabric-Displacement.jpg": "/my-3d-app/static/media/tan-fabric-Displacement.0272ed6dd19b18eac572.jpg",
     "static/media/matt-black-Roughness.jpg": "/my-3d-app/static/media/matt-black-Roughness.02b244705961412537bd.jpg",
     "static/media/Carpet-AO.jpg": "/my-3d-app/static/media/Carpet-AO.dee792264906db662d3b.jpg",
     "static/media/Carpet016_1K-JPG_Displacement.jpg": "/my-3d-app/static/media/Carpet016_1K-JPG_Displacement.c26da0e266331aa731d7.jpg",
@@ -30,6 +35,6 @@
   },
   "entrypoints": [
     "static/css/main.c2a96717.css",
-    "static/js/main.2ad3908d.js"
+    "static/js/main.7064afbf.js"
   ]
 }
